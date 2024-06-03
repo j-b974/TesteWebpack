@@ -19,6 +19,10 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\ManyToOne(targetEntity:"App\Entity\Role")]
+    #[ORM\JoinColumn(nullable: false)]
+    private Role $role;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class User
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): static
+    {
+        $this->role = $role;
 
         return $this;
     }

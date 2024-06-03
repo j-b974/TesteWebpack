@@ -16,6 +16,8 @@ class RoleFixtures extends Fixture
         {
             $role = new EntityRole();
             $role->setLabel($label);
+            // creer 3 reference pour user::class
+            $this->addReference('label_'.$label, $role);
             $manager->persist($role);
 
         }
